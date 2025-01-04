@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Connexion</h2>
+        <form id="login-form" onsubmit="return validateLogin()">
+            <label for="username">Identifiant :</label>
+            <input type="text" id="username" name="username" required placeholder="Entrez votre identifiant">
+            
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password" required placeholder="Entrez votre mot de passe">
+            
+            <button type="submit">Se connecter</button>
+            <p id="error-message"></p>
+        </form>
+    </div>
+
+    <script>
+        // Fonction pour valider les identifiants
+        function validateLogin() {
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const errorMessage = document.getElementById('error-message');
+
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
+            // Identifiants et mot de passe valides
+            const validUsername = 'fueed';
+            const validPassword = 'yuri';
+
+            // Vérifier si les identifiants sont corrects
+            if (username === validUsername && password === validPassword) {
+                alert('Connexion réussie');
+                return true; // Permet de soumettre le formulaire
+            } else {
+                // Message d'erreur
+                errorMessage.textContent = 'Identifiant ou mot de passe incorrect';
+                errorMessage.style.color = 'red';
+
+                // Efface les champs
+                usernameInput.value = '';
+                passwordInput.value = '';
+                
+                return false; // Empêche la soumission du formulaire
+            }
+        }
+    </script>
+</body>
+</html>
